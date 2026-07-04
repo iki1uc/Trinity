@@ -1,5 +1,7 @@
-// Trinity-Core + NameLage
+// Trinity-Core + NameLage (NC-First, Argumenteria-Rein)
+
 export const TrinityCore = {
+  // Micro-Achse (piOP)
   piOP: {
     flags: {},
     types: {},
@@ -9,6 +11,7 @@ export const TrinityCore = {
     }
   },
 
+  // Parameter-Achse (PRM = -2-)
   PRM: {
     params: {},
     set(key, val) {
@@ -19,6 +22,7 @@ export const TrinityCore = {
     }
   },
 
+  // Funktions-Achse (modi = yziu)
   modi: {
     fn: {},
     add(name, handler) {
@@ -29,7 +33,7 @@ export const TrinityCore = {
     }
   },
 
-  // NEW: NAME-LAGE MODULE
+  // NAME-LAGE (Trinity-Gründerstatus)
   nameLage: {
     name: "Trinity",
     lage: {
@@ -42,4 +46,3 @@ export const TrinityCore = {
     status: "NC-Startbereit"
   }
 };
-
