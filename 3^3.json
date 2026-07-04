@@ -1,0 +1,18 @@
+{
+  "Trinity": {
+    "Achsen": {
+      "Micro": "piOP",
+      "Parameter": "PRM (-2-)",
+      "Funktion": "modi (yziu)",
+      "Meta": "FLR"
+    },
+    "Status": "NC-Startbereit",
+    "Stabilität": 0.95,
+    "Name": "Trinity",
+    "Lage": {
+      "Achse1": "Micro",
+      "Achse2": "Parameter",
+      "Achse3": "Funktion"
+    }
+  }
+}
