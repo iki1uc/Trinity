@@ -1,10 +1,7 @@
-import { SCAN } from "../SCAN/zum.js";
-
 export const TrinityCore = {
     piOP,
     PRM,
 
-    // FUNKTIONSACHSE
     modi: {
         fn: {
             SCAN
@@ -21,11 +18,10 @@ export const TrinityCore = {
 
     RAWATOR,
 
-    // PIPELINE SYSTEM
     Pipeline: {
-        pipe0: ["A", "C"],   // AX, IS
-        pipe1: ["D"],        // SYT
-        pipe2: ["B"],        // XA
+        pipe0: ["A", "C", "E"],
+        pipe1: ["D", "F"],
+        pipe2: ["B", "G", "H"],
 
         run(pipeNumber) {
             const order = {
@@ -38,7 +34,6 @@ export const TrinityCore = {
                 this[pipe].forEach(step => {
                     console.log("RUN:", step);
 
-                    // SCAN-Funktionen ausführen
                     TrinityCore.modi.fn.SCAN[step]();
                 });
             });
