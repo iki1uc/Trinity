@@ -1,4 +1,4 @@
-// Trinity-Core + NameLage (NC-First, Argumenteria-Rein)
+// Trinity-Core (NC-First, Argumenteria-Rein)
 
 export const TrinityCore = {
   // Micro-Achse (piOP)
@@ -36,12 +36,22 @@ export const TrinityCore = {
   // NAME-LAGE (Trinity-Gründerstatus)
   nameLage: {
     name: "Trinity",
+
+    // Achsen-Zuordnung (funktionale Lage)
     lage: {
-      micro: "piOP",
-      parameter: "PRM (-2-)",
-      funktion: "modi (yziu)",
-      meta: "FLR"
+      Micro: "piOP",
+      Parameter: "PRM (-2-)",
+      Funktion: "modi (yziu)",
+      Meta: "FLR"
     },
+
+    // Achsen-Reihenfolge (Argumenteria-Lage)
+    lageOrdnung: {
+      Achse1: "Micro",
+      Achse2: "Parameter",
+      Achse3: "Funktion"
+    },
+
     stabilitaet: 0.95,
     status: "NC-Startbereit"
   }
