@@ -1,1 +1,23 @@
 
+// Trinity-Index
+import { TrinityCore } from "./TrinityCore.js";
+
+export const TrinityIndex = {
+  init() {
+    TrinityCore.PRM.set("boot", Date.now());
+    TrinityCore.piOP.bind("state", "ready");
+    TrinityCore.modi.add("ping", () => "pong");
+  },
+
+  call(op, input) {
+    return TrinityCore.modi.run(op, input);
+  },
+
+  status() {
+    return {
+      piOP: TrinityCore.piOP.flags,
+      PRM: TrinityCore.PRM.params,
+      modi: Object.keys(TrinityCore.modi.fn)
+    };
+  }
+};
