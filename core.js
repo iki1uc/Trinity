@@ -1,58 +1,35 @@
-// Trinity-Core (NC-First, Argumenteria-Rein)
+import { SCAN } from "../SCAN/zum.js";
 
 export const TrinityCore = {
-  // Micro-Achse (piOP)
-  piOP: {
-    flags: {},
-    types: {},
-    ops: {},
-    bind(param, value) {
-      this.flags[param] = value;
+    piOP,
+    PRM,
+
+    modi: {
+        fn: {
+            SCAN
+        },
+
+        add(name, handler) {
+            this.fn[name] = handler;
+        },
+
+        run(name, input) {
+            return this.fn[name]?.(input);
+        }
+    },
+
+    RAWATOR,
+
+    nameLage: {
+        name: "Trinity",
+        lage: {
+            Micro: "piOP",
+            Parameter: "PRM (-2-)",
+            Funktion: "modi",
+            Worker: "RAWATOR",
+            Funktionsmodul: "SCAN"
+        },
+        status: "NC-Startbereit",
+        stabilitaet: 0.95
     }
-  },
-
-  // Parameter-Achse (PRM = -2-)
-  PRM: {
-    params: {},
-    set(key, val) {
-      this.params[key] = val;
-    },
-    get(key) {
-      return this.params[key];
-    }
-  },
-
-  // Funktions-Achse (modi = yziu)
-  modi: {
-    fn: {},
-    add(name, handler) {
-      this.fn[name] = handler;
-    },
-    run(name, input) {
-      return this.fn[name]?.(input);
-    }
-  },
-
-  // NAME-LAGE (Trinity-Gründerstatus)
-  nameLage: {
-    name: "Trinity",
-
-    // Achsen-Zuordnung (funktionale Lage)
-    lage: {
-      Micro: "piOP",
-      Parameter: "PRM (-2-)",
-      Funktion: "modi (yziu)",
-      Meta: "FLR"
-    },
-
-    // Achsen-Reihenfolge (Argumenteria-Lage)
-    lageOrdnung: {
-      Achse1: "Micro",
-      Achse2: "Parameter",
-      Achse3: "Funktion"
-    },
-
-    stabilitaet: 0.95,
-    status: "NC-Startbereit"
-  }
 };
