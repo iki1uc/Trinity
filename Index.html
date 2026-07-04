@@ -1,23 +1,76 @@
+// Trinity-Index (NEU)
+// Level: EngineEvolution + RAWATOR + Pipeline + Narrativ + Selbstheilung
 
-// Trinity-Index
 import { TrinityCore } from "./TrinityCore.js";
 
 export const TrinityIndex = {
+
   init() {
+    // System-Boot
     TrinityCore.PRM.set("boot", Date.now());
     TrinityCore.piOP.bind("state", "ready");
+
+    // Basis-Modi
     TrinityCore.modi.add("ping", () => "pong");
+
+    // EngineEvolution Stufe 3 aktivieren
+    TrinityCore.Evolution3.aktiv = true;
+
+    // RAWATOR Prioritäten aktivieren
+    TrinityCore.RAWATORPriority.active = true;
+
+    // Selbstheilung aktivieren
+    TrinityCore.SHEngine.aktiv = true;
+
+    // Sichtbarkeit
+    this.output("System gestartet", this.status());
   },
 
   call(op, input) {
-    return TrinityCore.modi.run(op, input);
+    const result = TrinityCore.modi.run(op, input);
+    this.output(`Call: ${op}`, result);
+    return result;
+  },
+
+  runPipeline(n) {
+    this.output("Pipeline Start", { pipe: n });
+    TrinityCore.Pipeline.run(n);
+    this.output("Pipeline Ende", this.status());
+  },
+
+  heal() {
+    const heal = TrinityCore.SHEngine.start(Object.values(TrinityCore.module));
+    this.output("Selbstheilung", heal);
+    return heal;
+  },
+
+  evolve() {
+    const evo = TrinityCore.EngineEvolution.start(Object.values(TrinityCore.module));
+    this.output("Evolution", evo);
+    return evo;
   },
 
   status() {
     return {
       piOP: TrinityCore.piOP.flags,
       PRM: TrinityCore.PRM.params,
-      modi: Object.keys(TrinityCore.modi.fn)
+      modi: Object.keys(TrinityCore.modi.fn),
+      module: Object.keys(TrinityCore.module),
+      pipeline: TrinityCore.Pipeline,
+      RAWATOR: "aktiv",
+      Evolution: "Stufe 3",
+      Selbstheilung: TrinityCore.SHEngine.aktiv
     };
+  },
+
+  output(title, data) {
+    console.log("=== " + title + " ===");
+    console.log(JSON.stringify(data, null, 2));
+
+    const el = document.getElementById("trinity-output");
+    if (el) {
+      el.innerText = `=== ${title} ===\n` +
+        JSON.stringify(data, null, 2);
+    }
   }
 };
