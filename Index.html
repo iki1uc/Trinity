@@ -2,31 +2,90 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<title>Trinity – Index</title>
+<title>Trinity Public</title>
 
-<script type="module">
-import { TrinityIndex } from "./TrinityIndex.js";
-
-window.addEventListener("DOMContentLoaded", () => {
-    TrinityIndex.init();
-});
-
-window.callOp = (op) => TrinityIndex.call(op);
-window.runPipe = (n) => TrinityIndex.runPipeline(n);
-</script>
-
+<style>
+body { background:#000; color:#0f0; font-family:monospace; }
+h1, h2 { color:#6cf; }
+p { color:#9f9; }
+a { color:#6cf; display:block; margin:10px 0; font-size:1.1em; }
+pre { background:#000; border:1px solid #333; padding:10px; }
+hr { border:1px solid #333; margin:25px 0; }
+.block { margin:20px 0; }
+</style>
 </head>
 
 <body>
 
-<h1>Trinity – System</h1>
+<h1>Trinity Public</h1>
+<p>Öffentlicher Einstiegspunkt der Trinity‑Struktur</p>
 
-<button onclick="callOp('ping')">Ping</button>
-<button onclick="runPipe(1)">Pipeline 1</button>
+<hr>
 
-<a href="./visual/1D-6D.html">1D → 6D LIVE</a>
+<h2>Über Trinity Public</h2>
+<p>
+Trinity Public bildet die sichtbare Außenschicht des Systems.  
+Es zeigt die Struktur, Orientierung und öffentlichen Komponenten,  
+ohne interne Mechanismen oder Engine‑Abläufe offenzulegen.
+</p>
 
-<pre id="trinity-output">System wird geladen…</pre>
+<hr>
+
+<h2>Argumenteria‑Rahmen</h2>
+<pre>
+1. Klarheit
+2. Struktur
+3. Neutralität
+4. Nachvollziehbarkeit
+5. Integrität
+</pre>
+
+<h2>7SINN‑Relevanz</h2>
+<pre>
+1. Verständlichkeit
+2. Orientierung
+3. Nutzen
+4. Ordnung
+5. Neutralität
+6. Integrität
+7. Nachvollziehbarkeit
+</pre>
+
+<hr>
+
+<h2>Öffentliche Module</h2>
+<a href="./visual/1D-6D.html">1D → 2D → 3D → 6D – LIVE Visual</a>
+<a href="./3^3.json">Trinity – Public Struktur (3³.json)</a>
+<a href="./README.md">README – Dokumentation</a>
+
+<hr>
+
+<h2>Systemstatus (Public)</h2>
+<pre>
+Name: Trinity
+Status: NC‑Startbereit
+Stabilität: 0.95
+
+Achsen:
+- Micro (piOP)
+- Parameter (PRM)
+- Funktion (modi)
+- Meta (FLR)
+
+Lage:
+- Achse1: Micro
+- Achse2: Parameter
+- Achse3: Funktion
+</pre>
+
+<hr>
+
+<h2>Hinweis</h2>
+<p>
+Trinity Public zeigt ausschließlich die äußere Struktur.  
+Interne Prozesse, Engine‑Mechanismen oder System‑Abläufe  
+werden hier bewusst nicht dargestellt.
+</p>
 
 </body>
 </html>
