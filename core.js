@@ -1,10 +1,27 @@
 export const TrinityCore = {
-    piOP,
-    PRM,
+
+    piOP: {
+        flags: { ready: true }
+    },
+
+    PRM: {
+        params: { boot: 0 },
+        set(key, val) { this.params[key] = val; }
+    },
 
     modi: {
         fn: {
-            SCAN
+            ping: () => "pong",
+            SCAN: {
+                A: () => console.log("SCAN A"),
+                B: () => console.log("SCAN B"),
+                C: () => console.log("SCAN C"),
+                D: () => console.log("SCAN D"),
+                E: () => console.log("SCAN E"),
+                F: () => console.log("SCAN F"),
+                G: () => console.log("SCAN G"),
+                H: () => console.log("SCAN H")
+            }
         },
 
         add(name, handler) {
@@ -16,7 +33,9 @@ export const TrinityCore = {
         }
     },
 
-    RAWATOR,
+    RAWATOR: {
+        active: false
+    },
 
     Pipeline: {
         pipe0: ["A", "C", "E"],
@@ -32,25 +51,13 @@ export const TrinityCore = {
 
             sequence.forEach(pipe => {
                 this[pipe].forEach(step => {
-                    console.log("RUN:", step);
-
                     TrinityCore.modi.fn.SCAN[step]();
                 });
             });
         }
     },
 
-    nameLage: {
-        name: "Trinity",
-        lage: {
-            Micro: "piOP",
-            Parameter: "PRM (-2-)",
-            Funktion: "modi",
-            Worker: "RAWATOR",
-            Funktionsmodul: "SCAN",
-            Pipeline: "Pipeline"
-        },
-        status: "NC-Startbereit",
-        stabilitaet: 0.95
+    module: {
+        SCAN: "SCAN"
     }
 };
