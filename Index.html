@@ -1,76 +1,61 @@
-// Trinity-Index (NEU)
-// Level: EngineEvolution + RAWATOR + Pipeline + Narrativ + Selbstheilung
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Trinity – Index</title>
 
-import { TrinityCore } from "./TrinityCore.js";
+<style>
+body { background:#000; color:#0f0; font-family:monospace; }
+h1, h2 { color:#6cf; }
+a { color:#6cf; display:block; margin:10px 0; }
+pre { background:#000; border:1px solid #333; padding:10px; }
+button { padding:8px 14px; background:#333; color:#eee; border:1px solid #666; cursor:pointer; }
+button:hover { background:#444; }
+</style>
 
-export const TrinityIndex = {
+<script type="module">
+import { TrinityIndex } from "./TrinityIndex.js";
 
-  init() {
-    // System-Boot
-    TrinityCore.PRM.set("boot", Date.now());
-    TrinityCore.piOP.bind("state", "ready");
+window.addEventListener("DOMContentLoaded", () => {
+    TrinityIndex.init();
+});
 
-    // Basis-Modi
-    TrinityCore.modi.add("ping", () => "pong");
+function call(op){
+    TrinityIndex.call(op, "input");
+}
 
-    // EngineEvolution Stufe 3 aktivieren
-    TrinityCore.Evolution3.aktiv = true;
+function runPipe(n){
+    TrinityIndex.runPipeline(n);
+}
 
-    // RAWATOR Prioritäten aktivieren
-    TrinityCore.RAWATORPriority.active = true;
+function heal(){
+    TrinityIndex.heal();
+}
 
-    // Selbstheilung aktivieren
-    TrinityCore.SHEngine.aktiv = true;
+function evolve(){
+    TrinityIndex.evolve();
+}
+</script>
 
-    // Sichtbarkeit
-    this.output("System gestartet", this.status());
-  },
+</head>
 
-  call(op, input) {
-    const result = TrinityCore.modi.run(op, input);
-    this.output(`Call: ${op}`, result);
-    return result;
-  },
+<body>
 
-  runPipeline(n) {
-    this.output("Pipeline Start", { pipe: n });
-    TrinityCore.Pipeline.run(n);
-    this.output("Pipeline Ende", this.status());
-  },
+<h1>Trinity – Systemübersicht</h1>
 
-  heal() {
-    const heal = TrinityCore.SHEngine.start(Object.values(TrinityCore.module));
-    this.output("Selbstheilung", heal);
-    return heal;
-  },
+<h2>Engine</h2>
+<button onclick="call('ping')">Ping</button>
+<button onclick="heal()">Selbstheilung</button>
+<button onclick="evolve()">Evolution</button>
 
-  evolve() {
-    const evo = TrinityCore.EngineEvolution.start(Object.values(TrinityCore.module));
-    this.output("Evolution", evo);
-    return evo;
-  },
+<h2>Pipeline</h2>
+<button onclick="runPipe(1)">Pipeline 1</button>
 
-  status() {
-    return {
-      piOP: TrinityCore.piOP.flags,
-      PRM: TrinityCore.PRM.params,
-      modi: Object.keys(TrinityCore.modi.fn),
-      module: Object.keys(TrinityCore.module),
-      pipeline: TrinityCore.Pipeline,
-      RAWATOR: "aktiv",
-      Evolution: "Stufe 3",
-      Selbstheilung: TrinityCore.SHEngine.aktiv
-    };
-  },
+<h2>Visualisierung</h2>
+<a href="./visual/1D-6D.html">1D → 2D → 3D → 6D – LIVE</a>
 
-  output(title, data) {
-    console.log("=== " + title + " ===");
-    console.log(JSON.stringify(data, null, 2));
+<h2>Status</h2>
+<pre id="trinity-output">System wird geladen…</pre>
 
-    const el = document.getElementById("trinity-output");
-    if (el) {
-      el.innerText = `=== ${title} ===\n` +
-        JSON.stringify(data, null, 2);
-    }
-  }
-};
+</body>
+</html>
