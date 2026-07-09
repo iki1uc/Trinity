@@ -4,15 +4,6 @@
 <meta charset="UTF-8">
 <title>Trinity – Index</title>
 
-<style>
-body { background:#000; color:#0f0; font-family:monospace; }
-h1, h2 { color:#6cf; }
-a { color:#6cf; display:block; margin:10px 0; }
-pre { background:#000; border:1px solid #333; padding:10px; }
-button { padding:8px 14px; background:#333; color:#eee; border:1px solid #666; cursor:pointer; }
-button:hover { background:#444; }
-</style>
-
 <script type="module">
 import { TrinityIndex } from "./TrinityIndex.js";
 
@@ -20,41 +11,21 @@ window.addEventListener("DOMContentLoaded", () => {
     TrinityIndex.init();
 });
 
-function call(op){
-    TrinityIndex.call(op, "input");
-}
-
-function runPipe(n){
-    TrinityIndex.runPipeline(n);
-}
-
-function heal(){
-    TrinityIndex.heal();
-}
-
-function evolve(){
-    TrinityIndex.evolve();
-}
+window.callOp = (op) => TrinityIndex.call(op);
+window.runPipe = (n) => TrinityIndex.runPipeline(n);
 </script>
 
 </head>
 
 <body>
 
-<h1>Trinity – Systemübersicht</h1>
+<h1>Trinity – System</h1>
 
-<h2>Engine</h2>
-<button onclick="call('ping')">Ping</button>
-<button onclick="heal()">Selbstheilung</button>
-<button onclick="evolve()">Evolution</button>
-
-<h2>Pipeline</h2>
+<button onclick="callOp('ping')">Ping</button>
 <button onclick="runPipe(1)">Pipeline 1</button>
 
-<h2>Visualisierung</h2>
-<a href="./visual/1D-6D.html">1D → 2D → 3D → 6D – LIVE</a>
+<a href="./visual/1D-6D.html">1D → 6D LIVE</a>
 
-<h2>Status</h2>
 <pre id="trinity-output">System wird geladen…</pre>
 
 </body>
