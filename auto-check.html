@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Trinity Pages Auto‑Check</title>
+
+<style>
+body { background:#000; color:#0f0; font-family:monospace; }
+h1 { color:#6cf; }
+pre { background:#111; padding:10px; border:1px solid #333; }
+.ok { color:#0f0; }
+.err { color:#f33; }
+</style>
+</head>
+
+<body>
+
+<h1>Trinity Pages Auto‑Check</h1>
+<pre id="out">Lade…</pre>
+
+<script>
+async function check(url){
+    try {
+        const r = await fetch(url, { method:"GET" });
+        return r.status === 200
+            ? `OK  → ${url}`
+            : `ERROR (${r.status}) → ${url}`;
+    } catch(e){
+        return `ERROR (fetch) → ${url}`;
+    }
+}
+
+(async () => {
+    const base = "https://iki1uc.github.io/Trinity";
+
+    const checks = [
+        base + "/index.html",
+        base + "/visual/1D-6D.html",
+        base + "/3^3.json",
+        base + "/README.md"
+    ];
+
+    let out = "";
+    for(const c of checks){
+        const res = await check(c);
+        out += res + "\n";
+    }
+
+    document.getElementById("out").innerText = out;
+})();
+</script>
+
+</body>
+</html>
