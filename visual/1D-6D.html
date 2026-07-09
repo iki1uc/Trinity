@@ -1,1 +1,119 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Trinity – 1D → 2D → 3D → 6D LIVE</title>
+
+<style>
+body { background:#000; color:#0f0; font-family:monospace; }
+h1, h2 { color:#6cf; }
+pre { background:#000; border:1px solid #333; padding:10px; }
+input { width:80%; padding:6px; background:#111; color:#0f0; border:1px solid #333; }
+button { padding:8px 14px; background:#333; color:#eee; border:1px solid #666; cursor:pointer; }
+button:hover { background:#444; }
+.block { margin:20px 0; }
+</style>
+</head>
+
+<body>
+
+<h1>Trinity – 1D → 2D → 3D → 6D LIVE</h1>
+<p>Gib einen Ausdruck ein (z.B. Φ + AX + P4)</p>
+
+<input id="f" type="text" placeholder="Φ + AX + P4">
+<button onclick="go()">SCAN</button>
+
+<div class="block">
+<h2>1D – Impuls</h2>
+<pre id="d1">Noch keine Eingabe.</pre>
+</div>
+
+<div class="block">
+<h2>2D – Fläche</h2>
+<pre id="d2">Noch keine Eingabe.</pre>
+</div>
+
+<div class="block">
+<h2>3D – Körper</h2>
+<pre id="d3">Noch keine Eingabe.</pre>
+</div>
+
+<div class="block">
+<h2>6D – Multinorm</h2>
+<pre id="d6">Noch keine Eingabe.</pre>
+</div>
+
+<script>
+// Orbit
+function orbit(f){
+    if (f.includes("Φ")) return "IKI";
+    if (f.includes("φ∞")) return "MA³";
+    if (f.includes("φ²")) return "UC";
+    if (f.includes("φ")) return "BIR";
+    return "RAW";
+}
+
+// Operator
+function operator(f){
+    if (f.includes("AX")) return "AX";
+    if (f.includes("XA")) return "XA";
+    return "none";
+}
+
+// RUN
+function run(f){
+    if (f.includes("P4")) return "Start";
+    if (f.includes("P0")) return "Wake";
+    if (f.includes("P1")) return "Melt";
+    if (f.includes("P2")) return "Merge";
+    if (f.includes("Pe")) return "End";
+    return "none";
+}
+
+function go(){
+    let f = document.getElementById("f").value;
+
+    // 1D
+    let impuls = f.length;
+    document.getElementById("d1").innerText =
+        "SCAN = " + impuls + "\n" +
+        "Impuls = X = " + impuls + "\n" +
+        "Form: 1D = { Impuls }";
+
+    // 2D
+    let orb = orbit(f);
+    let op = operator(f);
+    document.getElementById("d2").innerText =
+        "Orbit = " + orb + "\n" +
+        "Operator = " + op + "\n" +
+        "Form: 2D = { Impuls, Orbit }";
+
+    // 3D
+    let rn = run(f);
+    document.getElementById("d3").innerText =
+        "Orbit = " + orb + "\n" +
+        "Operator = " + op + "\n" +
+        "RUN = " + rn + "\n" +
+        "Form: 3D = { Impuls, Orbit, Zeit }";
+
+    // 6D
+    let X = f.length % 7;
+    let Y = f.length % 11;
+    let Z = f.length % 13;
+    let POS = (f.length + 3) % 16;
+    let MASS = f.length * 5;
+
+    document.getElementById("d6").innerText =
+        "X = " + X + "\n" +
+        "Y = " + Y + "\n" +
+        "Z = " + Z + "\n" +
+        "POS = " + POS + "\n" +
+        "MASS = " + MASS + "\n" +
+        "ORBIT-NORM = " + orb + "\n\n" +
+        "Form: 6D = { X, Y, Z, POS, MASS, ORBIT }";
+}
+</script>
+
+</body>
+</html>
 
