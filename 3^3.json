@@ -1,18 +1,40 @@
 {
   "Trinity": {
+    "Name": "Trinity",
+    "Status": "NC-Startbereit",
+    "Stabilität": 0.95,
+
     "Achsen": {
       "Micro": "piOP",
       "Parameter": "PRM (-2-)",
       "Funktion": "modi (yziu)",
       "Meta": "FLR"
     },
-    "Status": "NC-Startbereit",
-    "Stabilität": 0.95,
-    "Name": "Trinity",
+
     "Lage": {
       "Achse1": "Micro",
       "Achse2": "Parameter",
       "Achse3": "Funktion"
+    },
+
+    "Public": {
+      "Zweck": "Öffentlicher Einstiegspunkt der Trinity-Struktur",
+      "Argumenteria": {
+        "1": "Klarheit",
+        "2": "Struktur",
+        "3": "Neutralität",
+        "4": "Nachvollziehbarkeit",
+        "5": "Integrität"
+      },
+      "7SINN": {
+        "1": "Verständlichkeit",
+        "2": "Orientierung",
+        "3": "Nutzen",
+        "4": "Ordnung",
+        "5": "Neutralität",
+        "6": "Integrität",
+        "7": "Nachvollziehbarkeit"
+      }
     }
   }
 }
